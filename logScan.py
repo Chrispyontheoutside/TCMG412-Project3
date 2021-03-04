@@ -92,17 +92,17 @@ def main():
     print("Done.")
     optionInput = ""
     while(not optionInput == "9"):
-        print("Options for data:\n(1) Total Requests\n(2) Previous Year Requsets\n(3) How many requests were made on each day?(4) How many requests were made on a week-by-week basis? Per month? \n(5) What percentage of the requests were not successful (any 4xx status code)?\n(6)What percentage of the requests were redirected elsewhere (any 3xx codes)?\n(7) What was the most-requested file?\n(8)What was the least-requested file?\n(9) Exit\n(Enter the single digit number correlated with the option)")
+        print("Options for data:\n(1) Total Requests\n(2) Previous Year Requsets\n(3) How many requests were made on each day?\n(4) How many requests were made on a week-by-week basis? Per month? \n(5) What percentage of the requests were not successful (any 4xx status code)?\n(6)What percentage of the requests were redirected elsewhere (any 3xx codes)?\n(7) What was the most-requested file?\n(8)What was the least-requested file?\n(9) Exit\n(Enter the single digit number correlated with the option)")
         optionInput = input()
         if(optionInput == "1"):
             print(getGETTotalRequests())
         if(optionInput == "2"):
             print(getGETRequestsPrevYear())
         if(optionInput == "3"):
-            print("Average number for month:", round(countFileRequests/12,2))
-            print("Average number for a week:", round(countFileRequests/52/2))
-        if(optionInput == "4"):
             break
+        if(optionInput == "4"):
+            print("Average number of requests for a month:", round(len(fileRequestsList)/12))
+            print("Average number of requests for a week:", round(len(fileRequestsList)/52))
         if(optionInput == "5"):
             break
         if(optionInput == "6"):
