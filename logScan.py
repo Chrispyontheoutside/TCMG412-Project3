@@ -108,9 +108,9 @@ def main():
         if(optionInput == "4"):
             break
         if(optionInput == "5"):
-            print("The percentage of 300-type errors: ",getPercentage300)
+            print("The percentage of 300-type errors: ",getPercentage300())
         if(optionInput == "6"):
-            print("The percentage of 400-type errors: ",getPercentage400)
+            print("The percentage of 400-type errors: ",getPercentage400())
         if(optionInput == "7"):
             print("The most requested file: ",findMaxRequestFile())
         if(optionInput == "8"):
