@@ -111,7 +111,42 @@ def main():
             print("The most requested file: ",findMaxRequestFile())
         if(optionInput == "8"):
             print(f"The least requested file: ", findMinRequestFile())
-      
+
+#percent of requests are 4xx and 3xx
+get3 = 0
+get4 = 0
+
+#not sure if this line to open file works in your code
+for line in open('local\log.txt'):
+    items2 = line.split()
+    if '302' in items2[-2]:
+        get3 += 1
+    if '304' in items2[-2]:
+        get3 += 1
+    if '403' in items2[-2]:
+        get4 += 1
+    if '404' in items2[-2]:
+        get4 += 1
+
+
+
+
+
+#print(get3)
+#print(get4)
+
+get3final = (get3/726736)*100
+
+get4final = (get4/726736)*100
+
+
+
+print(round(get3final,2),"Percent of requests are redirected.") 
+
+print(round(get4final,2),"Percent of requests are not successful.")
+
+
+
 if __name__ == "__main__":
     main()
 
