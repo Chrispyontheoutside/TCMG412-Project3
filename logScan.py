@@ -46,6 +46,33 @@ def getGETRequestsPrevYear():
                 getRequestsPrevYear += 1
     f.close()
 
+
+def getPercentage300():
+    get3 = 0
+    f = open('local/log.txt', 'r')
+    for line in f: 
+      items2 = line.split()
+      if '302' in items2[-2]:
+          get4 += 1
+      if '304' in items2[-2]:
+          get4 += 1
+      f.close
+    return(round((get4/len(fileRequestsList))*100))
+
+
+def getPercentage400():
+    get4 = 0
+    f = open('local/log.txt', 'r')
+    for line in f: 
+      items2 = line.split()
+      if '403' in items2[-2]:
+          get4 += 1
+      if '404' in items2[-2]:
+          get4 += 1
+      f.close
+    return(round((get4/len(fileRequestsList))*100))
+  
+
                 
 #Returns most requested file by finding the index of the max count from the values and indexes it from the list of values
 def findMinRequestFile():
@@ -104,7 +131,7 @@ def main():
         if(optionInput == "2"):
             print(getGETRequestsPrevYear())
         if(optionInput == "3"):
-            break
+            pritn("Average number of requests for a day: ", round(len(fileRequestsList)/365))
         if(optionInput == "4"):
             print("Average number of requests for a month:", round(len(fileRequestsList)/12))
             print("Average number of requests for a week:", round(len(fileRequestsList)/52))
