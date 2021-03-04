@@ -54,6 +54,10 @@ def findMinRequestFile():
 def findMaxRequestFile():
     return list(fileCountList.keys())[list(fileCountList.values()).index(min(list(fileCountList.values())))]
 
+
+
+
+
 def main():
     #Month names to seperate log file into several monthly log files
     monthNames = ["Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
@@ -78,12 +82,13 @@ def main():
         print("Seperating log files into months...")
     #open and append monthly data to corresponding file
     f = open('local/log.txt', 'r')
-    for line in f:
-        for name in monthNames:
-            if(name in line):
-                monthFile = open((name+'.txt'),'a')
-                monthFile.write(line+"")
-                monthFile.close()
+    
+    #for line in f:
+   #     for name in monthNames:
+       #     if(name in line):
+      #          monthFile = open((name+'.txt'),'a')
+         #       monthFile.write(line+"")
+       #         monthFile.close()
     f.close()
     print("Done.")
     print("Counting file requests...")
@@ -92,7 +97,7 @@ def main():
     print("Done.")
     optionInput = ""
     while(not optionInput == "9"):
-        print("Options for data:\n(1) Total Requests\n(2) Previous Year Requsets\n(3) How many requests were made on each day?(4) How many requests were made on a week-by-week basis? Per month? \n(5) What percentage of the requests were not successful (any 4xx status code)?\n(6)What percentage of the requests were redirected elsewhere (any 3xx codes)?\n(7) What was the most-requested file?\n(8)What was the least-requested file?\n(9) Exit\n(Enter the single digit number correlated with the option)")
+        print("Options for data:\n(1) Total Requests\n(2) Previous Year Requsets\n(3) How many requests were made on each day?\n(4) How many requests were made on a week-by-week basis? Per month? \n(5) What percentage of the requests were not successful (any 4xx status code)?\n(6)What percentage of the requests were redirected elsewhere (any 3xx codes)?\n(7) What was the most-requested file?\n(8)What was the least-requested file?\n(9) Exit\n(Enter the single digit number correlated with the option)")
         optionInput = input()
         if(optionInput == "1"):
             getGETTotalRequests
@@ -103,49 +108,18 @@ def main():
         if(optionInput == "4"):
             break
         if(optionInput == "5"):
-            break
+            print("The percentage of 300-type errors: ",getPercentage300)
         if(optionInput == "6"):
-            break
+            print("The percentage of 400-type errors: ",getPercentage400)
         if(optionInput == "7"):
             print("The most requested file: ",findMaxRequestFile())
         if(optionInput == "8"):
-            print(f"The least requested file: ", findMinRequestFile())
-
-#percent of requests are 4xx and 3xx
-get3 = 0
-get4 = 0
-
-#not sure if this line to open file works in your code
-for line in open('local\log.txt'):
-    items2 = line.split()
-    if '302' in items2[-2]:
-        get3 += 1
-    if '304' in items2[-2]:
-        get3 += 1
-    if '403' in items2[-2]:
-        get4 += 1
-    if '404' in items2[-2]:
-        get4 += 1
+            print("The least requested file: ", findMinRequestFile())
 
 
 
 
-
-#print(get3)
-#print(get4)
-
-get3final = (get3/726736)*100
-
-get4final = (get4/726736)*100
-
-
-
-print(round(get3final,2),"Percent of requests are redirected.") 
-
-print(round(get4final,2),"Percent of requests are not successful.")
-
-
-
+  
 if __name__ == "__main__":
     main()
 
