@@ -59,7 +59,7 @@ def getPercentage300():
       if '304' in items2[-2]:
           get3 += 1
       f.close
-    return(((get3/len(fileRequestsList))*100),2)
+    return(((get3/len(fileRequestsList))*100))
 
 
 def getPercentage400():
@@ -72,7 +72,7 @@ def getPercentage400():
       if '404' in items2[-2]:
           get4 += 1
       f.close
-    return(((get4/len(fileRequestsList))*100),2)
+    return(((get4/len(fileRequestsList))*100))
   
 
                 
