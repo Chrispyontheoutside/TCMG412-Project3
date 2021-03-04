@@ -83,12 +83,12 @@ def main():
     #open and append monthly data to corresponding file
     f = open('local/log.txt', 'r')
     
-    #for line in f:
-   #     for name in monthNames:
-       #     if(name in line):
-      #          monthFile = open((name+'.txt'),'a')
-         #       monthFile.write(line+"")
-       #         monthFile.close()
+    for line in f:
+        for name in monthNames:
+            if(name in line):
+                monthFile = open((name+'.txt'),'a')
+                monthFile.write(line+"")
+                monthFile.close()
     f.close()
     print("Done.")
     print("Counting file requests...")
