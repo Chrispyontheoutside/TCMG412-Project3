@@ -59,7 +59,7 @@ def getPercentage300():
       if '304' in items2[-2]:
           get3 += 1
       f.close
-    return(round((get3/len(fileRequestsList))*100))
+    return(((get3/len(fileRequestsList))*100),2)
 
 
 def getPercentage400():
@@ -72,7 +72,7 @@ def getPercentage400():
       if '404' in items2[-2]:
           get4 += 1
       f.close
-    return(round((get4/len(fileRequestsList))*100))
+    return(((get4/len(fileRequestsList))*100),2)
   
 
                 
@@ -124,8 +124,11 @@ def main():
     countFileRequests()
     print("Done.")
     optionInput = ""
+    optionPrompt = False
     while(not optionInput == "9"):
-        print("Options for data:\n(1) Total Requests\n(2) Previous Year Requsets\n(3) How many requests were made on each day?\n(4) How many requests were made on a week-by-week basis? Per month? \n(5) What percentage of the requests were not successful (any 4xx status code)?\n(6)What percentage of the requests were redirected elsewhere (any 3xx codes)?\n(7) What was the most-requested file?\n(8)What was the least-requested file?\n(9) Exit\n(Enter the single digit number correlated with the option)")
+        if(not optionPrompt):
+            print("Options for data:\n(1) Total Requests\n(2) Previous Year Requsets\n(3) How many requests were made on each day?\n(4) How many requests were made on a week-by-week basis? Per month? \n(5) What percentage of the requests were not successful (any 4xx status code)?\n(6)What percentage of the requests were redirected elsewhere (any 3xx codes)?\n(7) What was the most-requested file?\n(8)What was the least-requested file?\n(9) Exit\n(Enter the single digit number correlated with the option)")
+            optionPrompt=True
         optionInput = input()
         if(optionInput == "1"):
             print("Total number of GET requests",getGETTotalRequests())
