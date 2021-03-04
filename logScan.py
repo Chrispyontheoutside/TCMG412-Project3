@@ -127,9 +127,9 @@ def main():
         print("Options for data:\n(1) Total Requests\n(2) Previous Year Requsets\n(3) How many requests were made on each day?\n(4) How many requests were made on a week-by-week basis? Per month? \n(5) What percentage of the requests were not successful (any 4xx status code)?\n(6)What percentage of the requests were redirected elsewhere (any 3xx codes)?\n(7) What was the most-requested file?\n(8)What was the least-requested file?\n(9) Exit\n(Enter the single digit number correlated with the option)")
         optionInput = input()
         if(optionInput == "1"):
-            print(getGETTotalRequests())
+            print("Total number of GET requests",getGETTotalRequests())
         if(optionInput == "2"):
-            print(getGETRequestsPrevYear())
+            print("Total number of GET requests in 1995",getGETRequestsPrevYear())
         if(optionInput == "3"):
             pritn("Average number of requests for a day: ", round(len(fileRequestsList)/365))
         if(optionInput == "4"):
