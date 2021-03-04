@@ -36,15 +36,17 @@ def getGETTotalRequests():
         if "GET" in line:
             getRequests += 1
     f.close()
+    return getRequests
 #Returns total GET requests for the previous year, 1995
 def getGETRequestsPrevYear():
+    getRequestsPrevYear = 0
     f = open('local/log.txt', 'r')
     for line in f:
         if "GET" in line:
-            getRequests += 1
             if "1995" in line:
                 getRequestsPrevYear += 1
     f.close()
+    return getRequestsPrevYear
 
 
 def getPercentage300():
@@ -53,11 +55,11 @@ def getPercentage300():
     for line in f: 
       items2 = line.split()
       if '302' in items2[-2]:
-          get4 += 1
+          get3 += 1
       if '304' in items2[-2]:
-          get4 += 1
+          get3 += 1
       f.close
-    return(round((get4/len(fileRequestsList))*100))
+    return(round((get3/len(fileRequestsList))*100))
 
 
 def getPercentage400():
@@ -109,7 +111,6 @@ def main():
         print("Seperating log files into months...")
     #open and append monthly data to corresponding file
     f = open('local/log.txt', 'r')
-    
     for line in f:
         for name in monthNames:
             if(name in line):
@@ -131,7 +132,7 @@ def main():
         if(optionInput == "2"):
             print("Total number of GET requests in 1995",getGETRequestsPrevYear())
         if(optionInput == "3"):
-            pritn("Average number of requests for a day: ", round(len(fileRequestsList)/365))
+            print("Average number of requests for a day: ", round(len(fileRequestsList)/365))
         if(optionInput == "4"):
             print("Average number of requests for a month:", round(len(fileRequestsList)/12))
             print("Average number of requests for a week:", round(len(fileRequestsList)/52))
